@@ -1,0 +1,139 @@
+### POST Create flight
+POST http://localhost:8080/flights
+Content-Type: application/json
+
+{
+  "name": "Полет 2",
+  "description": "Описание полета 2",
+  "date": "2024-02-05",
+  "place": "53.2054305,50.159657"
+}
+
+### POST Create violation
+POST http://localhost:8080/violations
+Content-Type: application/json
+
+{
+  "name": "Нарушение 1",
+  "description": "Описание нарушения 1",
+  "time": "11:12:00"
+}
+
+### POST Create pilot
+POST http://localhost:8080/pilots
+Content-Type: application/json
+
+{
+  "name": "Алексей Иванов Иваныч"
+}
+
+### POST Create video
+POST http://localhost:8080/video
+Content-Type: application/json
+
+{
+  "name": "Видео 1",
+  "filePath": "/video1"
+}
+
+### POST Create card
+POST http://localhost:8080/card
+Content-Type: application/json
+
+{
+  "filePath": "/card1"
+}
+
+
+### GET Request for flight
+GET http://localhost:8080/flights/1
+Accept: application/json
+
+### GET Request for violation
+GET http://localhost:8080/violations/1
+Accept: application/json
+
+### GET Request for pilot
+GET http://localhost:8080/pilots/1
+Accept: application/json
+
+### GET Request for video
+GET http://localhost:8080/flights/6/video
+Accept: application/json
+
+### GET Request for card
+GET http://localhost:8080/card/1
+Accept: application/json
+
+
+### PUT Request for flight
+PUT http://localhost:8080/flights/1
+Content-Type: application/json
+
+{
+  "name": "Изм Полет 1",
+  "description": "Изм писание полета 1",
+  "date": "2024-02-02",
+  "place": "53.2054305,50.159657"
+}
+
+### PUT Request for violation
+PUT http://localhost:8080/violations/1
+Content-Type: application/json
+
+{
+  "name": "Изм Нарушение 1",
+  "description": "Изм Описание нарушения 1",
+  "time": "11:12:00"
+}
+
+### PUT Request for pilot
+PUT http://localhost:8080/pilots/1
+Content-Type: application/json
+
+{
+  "name": "Изм Иван Иванов Иванович"
+}
+
+### PUT Request for video
+PUT http://localhost:8080/flights/6/video
+Content-Type: application/json
+
+{
+  "name": "Изм Видео 1",
+  "filePath": "https://www.youtube.com/embed/VukLV0AoeFA"
+}
+
+### PUT Request for card
+PUT http://localhost:8080/card/1
+Content-Type: application/json
+
+{
+  "filePath": "/change/card1"
+}
+
+### PUT Add exists pilot to flight
+PUT http://localhost:8080/flights/3/add-pilot/6
+
+### POST Add new pilot to flight
+POST http://localhost:8080/flights/2/add-pilot/new
+Content-Type: application/json
+
+{
+  "name": "Павел Дуров"
+}
+
+### POST Add new flight to pilot
+POST http://localhost:8080/pilots/1/add-flight/new
+Content-Type: application/json
+
+{
+  "name": "Полет 2",
+  "description": "Описание полета 2",
+  "date": "2024-01-01",
+  "place": "53.2054304,50.159658"
+}
+
+### DELETE Pilot
+DELETE http://localhost:8080/pilots/8
+

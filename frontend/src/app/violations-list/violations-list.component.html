@@ -1,0 +1,27 @@
+<h2 class="title is-2">Список нарушений</h2>
+
+<button class="button" type="button" routerLink="/flights/{{flightId}}/violations/new">Добавиь нарушение</button>
+<hr>
+
+<div class="grid is-col-min-12">
+  <div class="cell" *ngFor="let violation of violations">
+    <div class="card">
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ violation.name }}</p>
+            <p class="subtitle is-6">Время: {{violation.time}}</p>
+          </div>
+        </div>
+        <div class="content">
+          {{ violation.description }}
+        </div>
+        <div class="buttons">
+          <button class="button is-info is-small" routerLink="/flights/{{flightId}}/violations/edit/{{violation.id}}">
+            Редактировать</button>
+          <button class="button is-danger is-small" (click)="deleteViolation(violation)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

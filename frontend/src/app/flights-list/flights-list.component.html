@@ -1,0 +1,41 @@
+<h2 class="title is-2">Список полетов</h2>
+
+<button class="button" type="button" routerLink="/flights/new">Добавиь полет</button>
+<hr>
+
+<div class="grid is-col-min-12">
+  <div class="cell" *ngFor="let flight of flights">
+    <div class="card">
+      <div class="card-image">
+        <figure class="image is-4by3">
+          <div style="position:relative;overflow:hidden;">
+            <iframe class="e2e-iframe-trusted-src" [src]="widgetUrl(flight.place)" width="560" height="400"></iframe>
+          </div>
+        </figure>
+      </div>
+      <div class="card-content">
+        <div class="media">
+          <div class="media-content">
+            <p class="title is-4">{{ flight.name }}</p>
+            <p class="subtitle is-6">Дата: {{ flight.date | date: 'dd.MM.yyyy' }}</p>
+            <p class="subtitle is-6" *ngIf="flightPilots[flight.id].length > 0">
+              Пилоты:
+              <span class="tag is-link is-light" *ngFor="let pilot of flightPilots[flight.id]">{{ pilot.name }}
+              </span>
+            </p>
+          </div>
+        </div>
+        <div class="content">
+          {{ flight.description }}
+        </div>
+        <div class="buttons">
+          <button class="button is-link is-small" routerLink="/flights/{{flight.id}}/video">Видео</button>
+          <button class="button is-warning is-small" routerLink="/flights/{{flight.id}}/violations">Нарушения</button>
+          <hr>
+          <button class="button is-info is-small" routerLink="/flights/edit/{{flight.id}}">Редактировать</button>
+          <button class="button is-danger is-small" (click)="deleteFlight(flight)">Удалить</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

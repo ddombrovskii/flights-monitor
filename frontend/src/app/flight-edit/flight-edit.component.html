@@ -1,0 +1,87 @@
+<h2 class="title is-2" *ngIf="edit">Редактирование полета {{ flight.name }}</h2>
+<h2 class="title is-2" *ngIf="!edit">Добавление нового полета</h2>
+
+<div class="field">
+  <label class="label" for="name">Название полета</label>
+  <div class="control">
+    <input class="input" type="text" id="name"
+           [(ngModel)]="flight.name" name="name" placeholder="Введите название">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="description">Описание полета</label>
+  <div class="control">
+    <textarea class="textarea" type="text" id="description"
+              [(ngModel)]="flight.description" name="description" placeholder="Введите описание"></textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="date">Дата полета</label>
+  <div class="control">
+    <input class="input" type="date" id="date"
+           [(ngModel)]="flight.date" name="date">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="place">Место полета</label>
+  <div class="control">
+    <input class="input" type="text" id="place"
+           [(ngModel)]="flight.place" name="place">
+  </div>
+</div>
+
+<div *ngIf="edit">
+  <div class="field" *ngIf="!videoAdded">
+    <label class="label" for="video-name">Название видео</label>
+    <div class="control">
+      <input class="input" type="text" id="video-name"
+             [(ngModel)]="video.name" name="video-name" placeholder="Введите название">
+    </div>
+  </div>
+
+
+  <div class="field" *ngIf="!videoAdded">
+    <label class="label" for="video">Ссылка на видео</label>
+    <div class="control">
+      <input class="input" type="text" id="video"
+             [(ngModel)]="video.filePath" name="video" placeholder="Введите ссылку">
+    </div>
+    <button class="button" (click)="addVideo(video)">Добавить</button>
+  </div>
+</div>
+
+<div class="field" *ngIf="edit">
+  <label class="label">Пилоты </label>
+  <div class="control">
+    <ul>
+      <li *ngFor="let pilot of flightPilots">
+        <p class="tag is-link is-light">{{ pilot.name }}</p>
+      </li>
+    </ul>
+  </div>
+</div>
+
+<div class="field" *ngIf="edit">
+  <label class="label">Выберите пилота</label>
+  <div class="control">
+    <div class="select">
+      <select [(ngModel)]="selectedPilot" name="select-pilot">
+        <option *ngFor="let pilot of availablePilots" [ngValue]="pilot">{{ pilot.name }}</option>
+      </select>
+    </div>
+    <button class="button" (click)="addPilot(selectedPilot)">Добавить</button>
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" type="button" (click)="update()" *ngIf="edit">Сохранить</button>
+    <button class="button is-link" type="button" (click)="save()" *ngIf="!edit">Создать</button>
+  </div>
+  <div class="control">
+    <button class="button is-link is-light" type="button" (click)="goBack()">Назад</button>
+  </div>
+</div>

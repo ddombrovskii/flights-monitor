@@ -1,0 +1,36 @@
+<h2 class="title is-2" *ngIf="edit">Редактирование нарушения {{ violation.name }}</h2>
+<h2 class="title is-2" *ngIf="!edit">Добавление нового нарушения</h2>
+
+<div class="field">
+  <label class="label" for="name">Название нарушения</label>
+  <div class="control">
+    <input class="input" type="text" id="name"
+           [(ngModel)]="violation.name" name="name" placeholder="Введите название">
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="description">Описание полета</label>
+  <div class="control">
+    <textarea class="textarea" type="text" id="description"
+              [(ngModel)]="violation.description" name="description" placeholder="Введите описание"></textarea>
+  </div>
+</div>
+
+<div class="field">
+  <label class="label" for="time">Время нарушения</label>
+  <div class="control">
+    <input class="input" type="time" id="time"
+           [(ngModel)]="violation.time" name="time" step="2">
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" type="button" (click)="update()" *ngIf="edit">Сохранить</button>
+    <button class="button is-link" type="button" (click)="save()" *ngIf="!edit">Создать</button>
+  </div>
+  <div class="control">
+    <button class="button is-link is-light" type="button" (click)="goBack()">Назад</button>
+  </div>
+</div>

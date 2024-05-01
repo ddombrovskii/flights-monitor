@@ -1,0 +1,20 @@
+<h2 class="title is-2" *ngIf="edit">Редактирование пилота {{ pilot.name }}</h2>
+<h2 class="title is-2" *ngIf="!edit">Добавление нового пилота</h2>
+
+<div class="field">
+  <label class="label" for="name">Имя пилота</label>
+  <div class="control">
+    <input class="input" type="text" id="name"
+           [(ngModel)]="pilot.name" name="name" placeholder="Введите имя">
+  </div>
+</div>
+
+<div class="field is-grouped">
+  <div class="control">
+    <button class="button is-link" type="button" (click)="update()" *ngIf="edit">Сохранить</button>
+    <button class="button is-link" type="button" (click)="save()" *ngIf="!edit">Создать</button>
+  </div>
+  <div class="control">
+    <button class="button is-link is-light" type="button" (click)="goBack()">Назад</button>
+  </div>
+</div>
